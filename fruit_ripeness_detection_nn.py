@@ -6,7 +6,7 @@ from torch.utils.data import DataLoader
 from PIL import Image
 import matplotlib.pyplot as plt
 
-# Device
+# Device Setup
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # Hyperparameters
@@ -76,7 +76,7 @@ for epoch in range(num_epochs):
     print(f"Epoch [{epoch + 1}/{num_epochs}], Loss: {total_loss:.4f}, Accuracy: {acc:.2f}%")
 
 
-# --- Predict Function ---
+# Predict Function 
 def predict_image(image_path):
     model.eval()
 
@@ -127,7 +127,7 @@ with torch.no_grad():
         for true, pred in zip(labels.cpu().numpy(), preds.cpu().numpy()):
             confusion[true][pred] += 1
 
-# --- Plotting the Confusion Matrix ---
+# Plotting Confusion Matrix 
 plt.figure(figsize=(10, 8))
 plt.imshow(confusion, interpolation='nearest', cmap=plt.cm.Blues)
 plt.title("Confusion Matrix")
